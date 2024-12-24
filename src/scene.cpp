@@ -3,23 +3,23 @@
 
 void SceneManager::changeScene(std::unique_ptr<Scene> newScene) {
     if (currentScene) {
-        currentScene->destroy();
+        currentScene->Destroy();
     }
 
     currentScene = std::move(newScene);
     if (currentScene) {
-        currentScene->init();
+        currentScene->Init();
     }
 }
 
-void SceneManager::update(float deltaTime) {
+void SceneManager::Update(float deltaTime) {
     if(currentScene) {
-        currentScene->update(deltaTime);
+        currentScene->Update(deltaTime);
     }
 }
 
-void SceneManager::render() {
+void SceneManager::Render() {
     if (currentScene) {
-        currentScene->render();
+        currentScene->Render();
     }
 }

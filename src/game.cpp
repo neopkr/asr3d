@@ -2,11 +2,11 @@
 #include "scenes/MenuScene.h"
 #include "engine/vector.h"
 
-CGame::CGame() : pWindow(new WindowGL()), pSceneManager(new SceneManager()) {}
+
+CGame::CGame() : pEvents(new CEngineEvents()) {}
 
 CGame::~CGame() {
-    delete pWindow;
-    delete pSceneManager;
+    delete pEvents;
 }
 
 void CGame::Setup() {
@@ -15,19 +15,22 @@ void CGame::Setup() {
     cFile.mkdir("saves");
 
     // Cambiar a la escena inicial
-    pSceneManager->changeScene(std::make_unique<MenuScene>());
+    pEvents->pSceneManager->changeScene(std::make_unique<MenuScene>());
 }
 
 void CGame::run() {
     // Init
-    pWindow->InitWindowGL();
+    pEvents->pWindow->InitWindowGL();
     std::cout << "Welcome to AlienShooter!!!!!" << std::endl;
-    Vector2* pointSize = new Vector2(.2f, .3f);
+    
     Setup();
 
+    pEvents->pPlayer->Init();
+
     // Loop
-    pWindow->GameLoop([this](float deltaTime) {
-        pSceneManager->update(deltaTime);
-        pSceneManager->render();
+    pEvents->pWindow->GameLoop([this](float deltaTime) {
+        pEvents->pPlayer->Update();
+        pEvents->pSceneManager->Update(deltaTime);
+        pEvents->pSceneManager->Render();
     });
 }

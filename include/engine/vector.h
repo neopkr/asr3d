@@ -3,7 +3,7 @@
 
 class Vector2 {
 public:
-    float _x, _y;
+    float x, y;
 
     Vector2(float x = 0.0f, float y = 0.0f);
 
@@ -21,7 +21,7 @@ public:
 
 class Vector3 {
 public:
-    float _x, _y, _z;
+    float x, y, z;
 
     Vector3(float x = 0.0f, float y = 0.0f, float z = 0.0f);
 

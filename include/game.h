@@ -1,9 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "window.h"
 #include "fsys.h"
-#include "scenemanager.h"
+#include "engine/events.h"
 
 #define PROJECT_TITLE "AlienShooter3D"
 #define SCREEN_WIDTH 800
@@ -22,8 +21,7 @@ public:
     void ReadLastConfiguration();
     void run();
 private:
-    WindowGL* pWindow;
-    SceneManager* pSceneManager;
+    CEngineEvents* pEvents;
 
 };
 

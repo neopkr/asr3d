@@ -1,86 +1,86 @@
 #include "engine/vector.h"
 #include <cmath>
 
-Vector2::Vector2(float x, float y) : _x(x), _y(y) {}
+Vector2::Vector2(float x, float y) : x(x), y(y) {}
 
 float Vector2::magnitude() const {
-    return std::sqrt(_x * _x + _y * _y);
+    return std::sqrt(x * x + y * y);
 }
 
 Vector2 Vector2::normalized() const {
     float mag = magnitude();
-    return (mag > 0) ? Vector2(_x / mag, _y / mag) : Vector2();
+    return (mag > 0) ? Vector2(x / mag, y / mag) : Vector2();
 }
 
 float Vector2::dot(const Vector2& other) const {
-    return _x * other._x + _y * other._y;
+    return x * other.x + y * other.y;
 }
 
 Vector2 Vector2::operator+(const Vector2& other) const {
-    return Vector2(_x + other._x, _y + other._y);
+    return Vector2(x + other.x, y + other.y);
 }
 
 Vector2 Vector2::operator-(const Vector2& other) const {
-    return Vector2(_x - other._x, _y - other._y);
+    return Vector2(x - other.x, y - other.y);
 }
 
 Vector2 Vector2::operator*(float scalar) const {
-    return Vector2(_x * scalar, _y * scalar);
+    return Vector2(x * scalar, y * scalar);
 }
 
 Vector2 Vector2::operator/(float scalar) const {
-    return (scalar != 0) ? Vector2(_x / scalar, _y / scalar) : Vector2();
+    return (scalar != 0) ? Vector2(x / scalar, y / scalar) : Vector2();
 }
 
 bool Vector2::operator==(const Vector2& other) const {
-    return _x == other._x && _y == other._y;
+    return x == other.x && y == other.y;
 }
 
 bool Vector2::operator!=(const Vector2& other) const {
     return !(*this == other);
 }
 
-Vector3::Vector3(float x, float y, float z) : _x(x), _y(y), _z(z) {}
+Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
 
 float Vector3::magnitude() const {
-    return std::sqrt(_x * _x + _y * _y + _z * _z);
+    return std::sqrt(x * x + y * y + z * z);
 }
 
 Vector3 Vector3::normalized() const {
     float mag = magnitude();
-    return (mag > 0) ? Vector3(_x / mag, _y / mag, _z / mag) : Vector3();
+    return (mag > 0) ? Vector3(x / mag, y / mag, z / mag) : Vector3();
 }
 
 float Vector3::dot(const Vector3& other) const {
-    return _x * other._x + _y * other._y + _z * other._z;
+    return x * other.x + y * other.y + z * other.z;
 }
 
 Vector3 Vector3::cross(const Vector3& other) const {
     return Vector3(
-        _y * other._z - _z * other._y,
-        _z * other._x - _x * other._z,
-        _x * other._y - _y * other._x
+        y * other.z - z * other.y,
+        z * other.x - x * other.z,
+        x * other.y - y * other.x
     );
 }
 
 Vector3 Vector3::operator+(const Vector3& other) const {
-    return Vector3(_x + other._x, _y + other._y, _z + other._z);
+    return Vector3(x + other.x, y + other.y, z + other.z);
 }
 
 Vector3 Vector3::operator-(const Vector3& other) const {
-    return Vector3(_x - other._x, _y - other._y, _z - other._z);
+    return Vector3(x - other.x, y - other.y, z - other.z);
 }
 
 Vector3 Vector3::operator*(float scalar) const {
-    return Vector3(_x * scalar, _y * scalar, _z * scalar);
+    return Vector3(x * scalar, y * scalar, z * scalar);
 }
 
 Vector3 Vector3::operator/(float scalar) const {
-    return (scalar != 0) ? Vector3(_x / scalar, _y / scalar, _z / scalar) : Vector3();
+    return (scalar != 0) ? Vector3(x / scalar, y / scalar, z / scalar) : Vector3();
 }
 
 bool Vector3::operator==(const Vector3& other) const {
-    return _x == other._x && _y == other._y && _z == other._z;
+    return x == other.x && y == other.y && z == other.z;
 }
 
 bool Vector3::operator!=(const Vector3& other) const {

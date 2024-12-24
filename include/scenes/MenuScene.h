@@ -7,22 +7,22 @@
 
 class MenuScene : public Scene {
 public:
-    void init() override {
+    void Init() override {
         std::cout << "Initializing Menu Scene" << std::endl;
         // Load textures, config opengl, etc
     }
 
-    void update(float deltaTime) override {
+    void Update(float deltaTime) override {
         // MenuLogic, inputs
     }
 
-    void render() override {
+    void Render() override {
         // Renderiza el menu
         glClearColor(0.1f, 0.2f, 0.3f, 1.0f); // Fondo azul
         glClear(GL_COLOR_BUFFER_BIT);
     }
 
-    void destroy() override {
+    void Destroy() override {
         std::cout << "Cleaning up scene!" << std::endl;
     }
 };

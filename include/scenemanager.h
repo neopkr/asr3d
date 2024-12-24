@@ -10,8 +10,8 @@ private:
     std::unique_ptr<Scene> currentScene;
 public:
     void changeScene(std::unique_ptr<Scene> newScene);
-    void update(float deltaTime);
-    void render();
+    void Update(float deltaTime);
+    void Render();
 };
 
 #endif
