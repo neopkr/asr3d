@@ -21,10 +21,17 @@ set(GLEW_LIBRARY "D:/dev/AlienShooter3D/motor/glew-2.1.0/lib/Release/Win32/glew3
 set(GLEW_DLL_PATH "D:/dev/AlienShooter3D/motor/glew-2.1.0/bin/Release/Win32/glew32.dll")
 
 # Incluir las rutas para los encabezados de GLEW y GLFW
-include_directories(${GLEW_INCLUDE_DIR} ${GLFW_INCLUDE_DIR} include)
+include_directories(
+    ${GLEW_INCLUDE_DIR} 
+    ${GLFW_INCLUDE_DIR} 
+    include
+    include/engine
+    include/engine/components
+    include/scenes
+)
 
 # Crear el ejecutable
-add_executable(AlienShooter ${SOURCES})
+add_executable(AlienShooter ${SOURCES} src/engine/)
 
 # Vincular las bibliotecas de OpenGL, GLEW y GLFW
 target_link_libraries(AlienShooter

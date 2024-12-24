@@ -3,6 +3,7 @@
 
 #include "window.h"
 #include "fsys.h"
+#include "scenemanager.h"
 
 #define PROJECT_TITLE "AlienShooter3D"
 #define SCREEN_WIDTH 800
@@ -22,6 +23,7 @@ public:
     void run();
 private:
     WindowGL* pWindow;
+    SceneManager* pSceneManager;
 
 };
 

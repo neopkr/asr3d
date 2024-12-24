@@ -24,11 +24,18 @@ void WindowGL::InitWindowGL() {
     glEnable(GL_DEPTH_TEST);
 }
 
-void WindowGL::GameLoop() {
+void WindowGL::GameLoop(const std::function<void(float)>& gameLogic) {
     while (!glfwWindowShouldClose(_window)) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Draw
+        // Calcula deltaTime (si es necesario)
+        static double lastTime = glfwGetTime();
+        double currentTime = glfwGetTime();
+        float deltaTime = static_cast<float>(currentTime - lastTime);
+        lastTime = currentTime;
+
+        // Lógica del juego
+        gameLogic(deltaTime);
 
         glfwSwapBuffers(_window);
         glfwPollEvents();
